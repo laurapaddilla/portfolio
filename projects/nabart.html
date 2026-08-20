@@ -1,0 +1,96 @@
+<style>
+    /* Forzamos el reseteo del contenedor del modal */
+    .project-modal-window {
+        max-width: 1300px !important;
+        width: calc(100% - 64px) !important;
+        margin: 0 auto !important;
+    }
+
+    .modal-scroll-content {
+        padding: 6rem 2rem 4rem 2rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    /* Estructura general de la ficha */
+    .project-case-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Tarjetas de texto neobrutalistas */
+    .bento-card-text {
+        border: 2px solid #121212 !important;
+        background: #ffffff !important;
+        padding: 2.5rem 2rem !important;
+        border-radius: 24px !important;
+        box-shadow: 4px 4px 0px #121212 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    /* Contenedor grande inferior para la imagen larga */
+    .long-scroll-container {
+        border: 2px solid #121212 !important;
+        border-radius: 24px !important;
+        overflow: hidden !important;
+        box-shadow: 6px 6px 0px #121212 !important;
+        background: #ffffff !important;
+        width: 100% !important;
+    }
+
+    .long-scroll-container img {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+    }
+
+    /* Responsive para móviles */
+    @media (max-width: 900px) {
+        .project-case-container {
+            width: calc(100% - 24px) !important;
+            margin: 12px auto !important;
+        }
+        .project-modal-window {
+            width: calc(100% - 24px) !important;
+            left: 12px !important; right: 12px !important; top: 12px !important; bottom: 12px !important;
+        }
+    }
+</style>
+
+<div class="project-case-container">
+    
+    <!-- Cabecera con título arriba y píldoras debajo -->
+    <div class="bento-card-text">
+        <div>
+            <p style="font-family: monospace; color: #FF2A85; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; font-size: 0.85rem;">Proyecto Web ✦ UI/UX & Frontend</p>
+            
+            <h3 style="font-family: 'Clash Display', sans-serif; font-size: 3.5rem; line-height: 1.1; letter-spacing: -0.02em; margin: 0; margin-bottom: 1.2rem; text-transform: uppercase; color: #121212;">Nabart.es</h3>
+            
+            <!-- Píldoras de herramientas -->
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: #fbfbfa; border: 1.5px solid #121212; padding: 4px 14px; border-radius: 20px; box-shadow: 2px 2px 0px #121212; color: #121212;">WordPress</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: #fbfbfa; border: 1.5px solid #121212; padding: 4px 14px; border-radius: 20px; box-shadow: 2px 2px 0px #121212; color: #121212;">Figma</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: #fbfbfa; border: 1.5px solid #121212; padding: 4px 14px; border-radius: 20px; box-shadow: 2px 2px 0px #121212; color: #121212;">Photoshop</span>
+            </div>
+            
+            <!-- Enlace web -->
+            <a href="https://nabart.es" target="_blank" rel="noopener noreferrer" 
+               style="display: inline-flex; align-items: center; gap: 10px; font-family: 'Space Mono', monospace; font-size: 1.1rem; font-weight: 700; color: #121212; text-decoration: none; border-bottom: 2px solid #FF2A85;">
+               Visitar web en directo ↗
+            </a>
+        </div>
+    </div>
+
+    <!-- Contenedor con la imagen del proyecto -->
+    <div class="long-scroll-container">
+        <img src="img/nabart.webp" alt="Nabart.es - Proyecto web">
+    </div>
+
+</div>

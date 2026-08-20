@@ -1,0 +1,255 @@
+<style>
+    /* Forzamos el reseteo del contenedor del modal principal */
+    .project-modal-window {
+        max-width: 1300px !important;
+        width: calc(100% - 64px) !important;
+        margin: 0 auto !important;
+    }
+
+    .modal-scroll-content {
+        padding: 6rem 2rem 4rem 2rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .project-case-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+
+    .bento-card-text {
+        border: 2px solid #121212 !important;
+        background: #ffffff !important;
+        padding: 2.5rem 2rem !important;
+        border-radius: 24px !important;
+        box-shadow: 4px 4px 0px #121212 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    .long-scroll-container {
+        border: 2px solid #121212 !important;
+        border-radius: 24px !important;
+        overflow: hidden !important;
+        box-shadow: 6px 6px 0px #121212 !important;
+        background: #ffffff !important;
+        width: 100% !important;
+    }
+
+    .long-scroll-container img {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+    }
+
+    /* Rejilla de vídeos simétrica */
+    .videos-grid-container {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
+        align-items: stretch !important;
+    }
+
+    .video-interactive-card {
+        border: 2px solid #121212 !important;
+        border-radius: 24px !important;
+        overflow: hidden !important;
+        box-shadow: 4px 4px 0px #121212 !important;
+        background: #ffffff !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    .video-thumbnail-box {
+        position: relative !important;
+        width: 100% !important;
+        height: 380px !important;
+        background: #121212 !important;
+        overflow: hidden !important;
+    }
+
+    .video-thumbnail-box img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+    }
+
+    .play-video-btn {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        background: #ffffff !important;
+        border: 2px solid #121212 !important;
+        color: #121212 !important;
+        font-family: 'Space Mono', monospace !important;
+        font-weight: 700 !important;
+        font-size: 0.9rem !important;
+        padding: 12px 24px !important;
+        border-radius: 30px !important;
+        cursor: pointer !important;
+        box-shadow: 4px 4px 0px #121212 !important;
+        transition: all 0.2s ease !important;
+        z-index: 5 !important;
+    }
+
+    .play-video-btn:hover {
+        background: #FF2A85 !important;
+        color: #ffffff !important;
+        transform: translate(-50%, calc(-50% - 2px)) !important;
+        box-shadow: 6px 6px 0px #121212 !important;
+    }
+
+    .video-caption {
+        font-family: 'Space Mono', monospace !important;
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        color: #555558 !important;
+        padding: 1.5rem !important;
+        background: #ffffff !important;
+        border-top: 2px solid #121212 !important;
+        margin: 0 !important;
+    }
+
+    /* --- LIGHTBOX CORREGIDO (PROPORCIÓN 16:9 REAL) --- */
+    .video-lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(18, 18, 18, 0.9);
+        z-index: 99999;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        box-sizing: border-box;
+    }
+
+    /* Cuando se activa con la clase, usa flex para centrar */
+    .video-lightbox-overlay.is-active {
+        display: flex !important;
+    }
+
+    .video-lightbox-content {
+        position: relative;
+        background: #121212;
+        border: 2px solid #ffffff;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 8px 8px 0px #FF2A85;
+        width: 100%;
+        max-width: 950px;
+    }
+
+    /* Contenedor de proporción 16:9 corregido al 56.25% */
+    .ratio-box-169 {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25% !important; /* <--- Corregido de 70% a 56.25% */
+    }
+
+    .ratio-box-169 iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .close-lightbox-btn {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: #ffffff;
+        border: 2px solid #121212;
+        color: #121212;
+        font-size: 1.2rem;
+        font-weight: 700;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100000;
+        box-shadow: 3px 3px 0px #121212;
+    }
+
+    .close-lightbox-btn:hover {
+        background: #FF2A85;
+        color: #ffffff;
+    }
+
+    @media (max-width: 900px) {
+        .videos-grid-container {
+            grid-template-columns: 1fr !important;
+        }
+        .video-thumbnail-box {
+            height: 300px !important;
+        }
+        .video-lightbox-overlay {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<div class="project-case-container">
+    
+    <!-- Cabecera -->
+    <div class="bento-card-text">
+        <div>
+            <p style="font-family: monospace; color: #FF2A85; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; font-size: 0.85rem;">Trabajo Fin de Grado ✦ Memoria Gráfica</p>
+            <h3 style="font-family: 'Clash Display', sans-serif; font-size: 3.5rem; line-height: 1.1; letter-spacing: -0.02em; margin: 0; margin-bottom: 1.2rem; text-transform: uppercase; color: #121212;">Bodegas Al Solete</h3>
+            
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: #fbfbfa; border: 1.5px solid #121212; padding: 4px 14px; border-radius: 20px; box-shadow: 2px 2px 0px #121212; color: #121212;">Illustrator</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: #fbfbfa; border: 1.5px solid #121212; padding: 4px 14px; border-radius: 20px; box-shadow: 2px 2px 0px #121212; color: #121212;">Photoshop</span>
+                 <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: #fbfbfa; border: 1.5px solid #121212; padding: 4px 14px; border-radius: 20px; box-shadow: 2px 2px 0px #121212; color: #121212;">Indesing</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: #fbfbfa; border: 1.5px solid #121212; padding: 4px 14px; border-radius: 20px; box-shadow: 2px 2px 0px #121212; color: #121212;">CapCut</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: #fbfbfa; border: 1.5px solid #121212; padding: 4px 14px; border-radius: 20px; box-shadow: 2px 2px 0px #121212; color: #121212;">WordPress</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Imagen larga con scroll -->
+    <div class="long-scroll-container">
+        <img src="img/alsolete.webp" alt="Memoria completa y despliegue gráfico de Bodegas Al Solete">
+    </div>
+
+    <!-- Contenedor de vídeos en grid simétrico -->
+    <div class="videos-grid-container">
+        
+        <!-- Vídeo 1: Promocional -->
+        <div class="video-interactive-card">
+            <div class="video-thumbnail-box">
+                <img src="img/audiovisual.png" alt="Miniatura Video Promocional">
+                <button class="play-video-btn" onclick="openVideoModal('https://player.vimeo.com/video/1219267260?autoplay=1')">▶ Ver vídeo</button>
+            </div>
+            <p class="video-caption">✦ Video promocional</p>
+        </div>
+
+        <!-- Vídeo 2: Reel para Instagram -->
+        <div class="video-interactive-card">
+            <div class="video-thumbnail-box">
+                <img src="img/reel.png" alt="Miniatura Reel Instagram">
+                <button class="play-video-btn" onclick="openVideoModal('https://player.vimeo.com/video/1219267261?autoplay=1')">▶ Ver vídeo</button>
+            </div>
+            <p class="video-caption">✦ Reel para Instagram</p>
+        </div>
+
+    </div>
+
+</div>

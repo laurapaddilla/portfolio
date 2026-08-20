@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura Padilla | Frontend Developer & Graphic Designer</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos base de la rejilla de proyectos de 2 columnas */
+        .clean-projects-columns-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        /* --- CORRECCIONES FINALES MÓVIL (MENÚ Y SIMETRÍA) --- */
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* 1. Márgenes laterales estrictamente simétricos */
+            .main-wrapper {
+                padding-left: 1.25rem !important;
+                padding-right: 1.25rem !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* 2. Menú superior blindado para móvil: centrado, sin salirse y con aire uniforme */
+            .header-navbar {
+                position: relative !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: calc(100% - 2.5rem) !important;
+                max-width: 100% !important;
+                margin: 1rem auto 1.5rem auto !important;
+                padding: 0.6rem 1rem !important;
+                box-sizing: border-box !important;
+                left: auto !important;
+                right: auto !important;
+                transform: none !important;
+            }
+            .nav-logo {
+                font-size: 0.95rem !important;
+                letter-spacing: -0.5px !important;
+            }
+            .nav-links {
+                gap: 0.5rem !important;
+                font-size: 0.75rem !important;
+                padding-left: 0 !important;
+                margin: 0 !important;
+            }
+            .btn-connect {
+                font-size: 0.75rem !important;
+                padding: 6px 12px !important;
+            }
+
+            /* 3. Espaciado vertical equilibrado entre secciones */
+            .hero-section {
+                padding-top: 0.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+            .projects-grid-section, 
+            .about-section-layout, 
+            .stack-section-layout {
+                margin-top: 1.5rem !important;
+                margin-bottom: 1.5rem !important;
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+
+            /* 4. Barra flotante inferior centrada */
+            .floating-message-hub-bar {
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: calc(100% - 2.5rem) !important;
+                max-width: 400px !important;
+                box-sizing: border-box !important;
+                bottom: 1.2rem !important;
+            }
+
+            /* 5. Rejilla de proyectos a 1 columna */
+            .clean-projects-columns-container {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            /* 6. Tamaños de títulos proporcionados */
+            .hero-section h2, 
+            .hero-info-block h2 {
+                font-size: 2rem !important;
+                line-height: 1.15 !important;
+            }
+            .about-section-layout h2 {
+                font-size: 1.55rem !important;
+                line-height: 1.2 !important;
+            }
+            .stack-title-side h3 {
+                font-size: 1.4rem !important;
+                line-height: 1.2 !important;
+            }
+
+            /* 7. Stack de tecnologías: 3 columnas simétricas y limpias */
+            .stack-grid-icons-side {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 0.4rem !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .icon-box-item {
+                width: 100% !important;
+                padding: 0.5rem 0.1rem !important;
+                font-size: 0.7rem !important;
+                box-sizing: border-box !important;
+                text-align: center !important;
+                border-radius: 10px !important;
+                letter-spacing: -0.5px !important;
+            }
+
+            /* 8. Corregir el correo electrónico en el footer */
+            .footer-contact-details .email-link {
+                font-size: 0.92rem !important; 
+                word-break: break-all !important; 
+                display: inline-block !important;
+                max-width: 100% !important;
+            }
+
+            /* 9. Centrar foto y tarjeta de disponibilidad */
+            .about-split-columns {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 2rem !important;
+            }
+            .about-left-identity-card {
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            .profile-portrait-frame, .mini-experience-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* 10. Texto de estado superior */
+            .status-pill span:not(.status-dot) {
+                display: none !important;
+            }
+            .status-pill::after {
+                content: "Disponible" !important;
+                font-weight: 600;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="custom-cursor"></div>
+
+    <!-- Modal de proyectos recolocado de forma limpia al inicio del DOM -->
+    <div id="project-modal" class="project-modal-overlay">
+        <div class="project-modal-window">
+            <button class="modal-close-btn" onclick="closeProject()">×</button>
+            <div id="modal-dynamic-content" class="modal-scroll-content"></div>
+        </div>
+    </div>
+
+    <nav class="header-navbar">
+        <a href="#" class="nav-logo">Laura Padilla</a>
+        <ul class="nav-links">
+            <li><a href="#work">Proyectos</a></li>
+            <li><a href="#about">Sobre mí</a></li>
+        </ul>
+        <a href="#contact" class="btn-connect">Contacto</a>
+    </nav>
+
+    <div class="floating-message-hub-bar">
+        <div class="msg-bar-text">
+            Escríbeme un mensaje
+            <span class="msg-bar-subtext">o descarga mi currículum</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+            <a href="mailto:padillanavazolaura@gmail.com" class="msg-icon-circle-btn" title="Enviar Email">✉</a>
+            <a href="/CV Laura Padilla 2026.pdf" class="download-icon-circle-btn" title="Ver o descargar CV" target="_blank" rel="noopener noreferrer">↓</a>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        
+        <section class="hero-section">
+            <div class="hero-info-block">
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    <span>Disponible presencial en Salamanca, Remoto o Freelance</span>
+                </div>
+                <h2>Hi ✦ I'm Laura.<br><span>Frontend Developer</span> & <em>Graphic / UI/UX Designer</em>.</h2>
+                <p class="hero-sub-msg">Bienvenido a mi pequeño rincón de internet.</p>
+                <p class="hero-body-text">Especializada en la creación integral de proyectos: desde el concepto visual y el diseño UI/UX hasta el código final. Buscando impulsar ideas de forma remota para empresas y clientes de todo el mundo.</p>
+            </div>
+        </section>
+
+        <div class="marquee-separator-line">
+            <div class="marquee-track-flow">
+                <span>✦ FRONTEND & BRANDING </span>
+                <span>✦ ADOBE SUITE </span>
+                <span>✦ DE LA IDEA AL NAVEGADOR </span>
+                <span>✦ CROCHET & VECTOR LOVER </span>
+                <span>✦ INTERFACES INTUITIVAS </span>
+                <span>✦ WEBS A MEDIDA </span>
+                <span>✦ FRONTEND & BRANDING </span>
+                <span>✦ ADOBE SUITE </span>
+                <span>✦ DE LA IDEA AL NAVEGADOR </span>
+                <span>✦ CROCHET & VECTOR LOVER </span>
+                <span>✦ INTERFACES INTUITIVAS </span>
+                <span>✦ WEBS A MEDIDA </span>
+            </div>
+        </div>
+
+        <section class="projects-grid-section" id="work">
+            <h2 class="grid-main-headline">Proyectos_</h2>
+            
+            <div class="clean-projects-columns-container">
+                
+                <!-- Proyecto 1: Nabart -->
+                <div class="symmetric-project-card" onclick="openProject('nabart')">
+                    <div class="project-thumbnail-wrapper">
+                        <span class="hover-peek-indicator">Ver Caso ↗</span>
+                        <img src="img/portadanabart.png" alt="Nabart Web">
+                    </div>
+                    <div class="project-meta-row">
+                        <h3 class="project-name-title">Nabart.es</h3>
+                        <span class="inline-peek-action">↗ Ver Proyecto</span>
+                    </div>
+                    <p class="project-brief-line">Modernización y despliegue del nuevo site de Nabart en WordPress, rediseñando la arquitectura de información y elevando la experiencia digital para un impacto mucho más actual y directo.</p>
+                </div>
+
+                <!-- Proyecto 2: Bodegas Al Solete -->
+                <div class="symmetric-project-card" onclick="openProject('solete')">
+                    <div class="project-thumbnail-wrapper">
+                        <span class="hover-peek-indicator">Ver Caso ↗</span>
+                        <img src="img/portadaalsolete.webp" alt="Bodegas Al Solete">
+                    </div>
+                    <div class="project-meta-row">
+                        <h3 class="project-name-title">Bodegas Al Solete</h3>
+                        <span class="inline-peek-action">↗ Ver Proyecto</span>
+                    </div>
+                    <p class="project-brief-line">Proyecto de fin de grado centrado en la identidad visual completa, packaging y piezas gráficas para una bodega ficticia, complementado con una web corporativa y una estrategia de difusión audiovisual.</p>
+                </div>
+
+                <!-- Proyecto 3: Spicy Turkish -->
+                <div class="symmetric-project-card" onclick="openProject('spicy-turkish')">
+                    <div class="project-thumbnail-wrapper">
+                        <span class="hover-peek-indicator">Ver Caso ↗</span>
+                        <img src="img/portadaspicy.png" alt="Spicy Turkish">
+                    </div>
+                    <div class="project-meta-row">
+                        <h3 class="project-name-title">Spicy Turkish</h3>
+                        <span class="inline-peek-action">↗ Ver Proyecto</span>
+                    </div>
+                    <p class="project-brief-line">Reinventando la experiencia de comida turca rápida con una identidad visual inspirada en la animación clásica de los años 30.</p>
+                </div>
+
+                <!-- Proyecto 4: Cartelería -->
+                <div class="symmetric-project-card" onclick="openProject('carteleria')">
+                    <div class="project-thumbnail-wrapper">
+                        <span class="hover-peek-indicator">Ver Caso ↗</span>
+                        <img src="img/portadacarteleria.webp" alt="Proyectos de Cartelería">
+                    </div>
+                    <div class="project-meta-row">
+                        <h3 class="project-name-title">Cartelería y Gráfica</h3>
+                        <span class="inline-peek-action">↗ Ver Proyecto</span>
+                    </div>
+                    <p class="project-brief-line">Selección de trabajos de cartelería y diseño expositivo, combinando composición tipográfica, jerarquía visual y producción gráfica para entornos culturales y comerciales.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="about-section-layout" id="about">
+            <h2>Hacer las cosas con intención, no solo por llamar la atención.</h2>
+            
+            <div class="about-split-columns">
+                
+                <div class="about-left-identity-card">
+                    <div class="profile-portrait-frame">
+                        <img src="img/laura-bw.jpeg" alt="Laura Padilla - Diseñadora" class="bw-portrait">
+                        <img src="img/laura-color.jpg" alt="Laura Padilla - Desarrolladora" class="color-portrait">
+                    </div>
+
+                    <div class="mini-experience-card">
+                        <div class="exp-label-title">Disponibilidad Actual</div>
+                        <div class="exp-row-item">
+                            <span class="exp-role-name">Salamanca (Presencial)</span>
+                            <span class="exp-timeline">Inmediata</span>
+                        </div>
+                        <div class="exp-row-item">
+                            <span class="exp-role-name">Remoto / Freelance</span>
+                            <span class="exp-timeline">Inmediata</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-right-narrative-block">
+                    <p>Creo firmemente que el buen diseño nace de <strong>saber escuchar</strong>. Entiendo el vector, entiendo el píxel y entiendo el código que los hace posibles en el navegador.</p>
+                    <p>Me obsesionan los pequeños detalles: el espaciado exacto, el comportamiento de un botón bajo presión o la armonía tipográfica. No imagino diseños que no se puedan programar de forma limpia, ni pico código sin cuidar el arte final del proyecto.</p>
+                    <p>Cuando no estoy frente a la pantalla depurando estilos o líneas de código, me encontrarás tejiendo crochet o diseñando identidades corporativas. Considero que la paciencia milimétrica que requiere un patrón manual es la misma disciplina que aplico para actuar frente a mis soluciones de desarrollo frontend.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="stack-section-layout">
+            <div class="stack-title-side">
+                <h3>Un diseño que funciona, avanza y se mantiene vivo.</h3>
+                <p>my tech stack_</p>
+            </div>
+            <div class="stack-grid-icons-side">
+                <div class="icon-box-item">Figma</div>
+                <div class="icon-box-item">WordPress</div>
+                <div class="icon-box-item">Elementor</div>
+                <div class="icon-box-item">Illustrator</div>
+                <div class="icon-box-item">Photoshop</div>
+                <div class="icon-box-item">InDesign</div>
+                <div class="icon-box-item">Canva</div>
+                <div class="icon-box-item">HTML/CSS</div>
+                <div class="icon-box-item">JS / DAW</div>
+            </div>
+        </section>
+
+        <footer class="blackout-footer-block" id="contact">
+            <div class="blackout-inner-content">
+                <h2><span>Vamos a crear</span> algo increíble juntos.</h2>
+                
+                <div class="footer-columns-links-row">
+                    <div class="footer-contact-details">
+                        <p>Email</p>
+                        <a href="mailto:padillanavazolaura@gmail.com" class="email-link">padillanavazolaura@gmail.com</a>
+                    </div>
+                    <div class="footer-mini-nav-links">
+                        <p style="font-family: var(--font-mono); font-size: 0.85rem; color: #444; margin-bottom: 0.5rem;">Menú</p>
+                        <a href="#work">Proyectos</a>
+                        <a href="#about">Sobre mí</a>
+                        <a href="/CV Laura Padilla 2026.pdf" target="_blank" rel="noopener noreferrer">Descargar resumen(CV) </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="main.js"></script>
+    <div id="videoLightbox" class="video-lightbox-overlay" onclick="closeVideoModal()">
+        <div class="video-lightbox-content" onclick="event.stopPropagation()">
+            <button class="close-lightbox-btn" onclick="closeVideoModal()">✕</button>
+            <div class="ratio-box-169">
+                <iframe id="lightboxIframe" src="" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

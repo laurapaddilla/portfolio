@@ -1,0 +1,187 @@
+<style>
+    .project-modal-window {
+        max-width: 1300px !important;
+        width: calc(100% - 64px) !important;
+        margin: 0 auto !important;
+    }
+
+    .modal-scroll-content {
+        padding: 6rem 2rem 4rem 2rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .project-case-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        width: 100% !important;
+        max-width: 900px !important; /* Un poco más estrecho para que los carteles en vertical luzcan mejor */
+        margin: 0 auto !important;
+    }
+
+    .bento-card-text {
+        border: 2px solid #121212 !important;
+        background: #ffffff !important;
+        padding: 2.5rem 2rem !important;
+        border-radius: 24px !important;
+        box-shadow: 4px 4px 0px #121212 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    /* Contenedor en una sola columna */
+    .carteleria-grid-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .cartel-item-card {
+        border: 2px solid #121212 !important;
+        border-radius: 24px !important;
+        overflow: hidden !important;
+        box-shadow: 4px 4px 0px #121212 !important;
+        background: #ffffff !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .cartel-thumbnail-wrapper {
+        width: 100%;
+        background: #f4f4f4;
+        border-bottom: 2px solid #121212;
+    }
+
+    .cartel-thumbnail-wrapper img {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+    }
+
+    .cartel-info-row {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .cartel-info-row h4 {
+        font-family: 'Clash Display', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin: 0;
+        color: #121212;
+        text-transform: uppercase;
+    }
+
+    .cartel-info-row p {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.9rem;
+        color: #555555;
+        margin: 0;
+    }
+
+    /* Adaptación móvil */
+    @media (max-width: 768px) {
+        .modal-scroll-content {
+            padding: 4rem 1rem 2rem 1rem !important;
+        }
+        .project-case-container {
+            max-width: 100% !important;
+        }
+    }
+</style>
+
+<div class="project-case-container">
+    
+    <!-- Cabecera -->
+    <div class="bento-card-text">
+        <div>
+            <p style="font-family: monospace; color: #FF2A85; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; font-size: 0.85rem;">Diseño Gráfico ✦ Expositivo y Cultural</p>
+            <h3 style="font-family: 'Clash Display', sans-serif; font-size: 3.5rem; line-height: 1.1; letter-spacing: -0.02em; margin: 0; margin-bottom: 1.2rem; text-transform: uppercase; color: #121212;">Cartelería & Gráfica</h3>
+            
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: #fbfbfa; border: 1.5px solid #121212; padding: 4px 14px; border-radius: 20px; box-shadow: 2px 2px 0px #121212; color: #121212;">Illustrator</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: #fbfbfa; border: 1.5px solid #121212; padding: 4px 14px; border-radius: 20px; box-shadow: 2px 2px 0px #121212; color: #121212;">Photoshop</span>
+                <span style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; background: #fbfbfa; border: 1.5px solid #121212; padding: 4px 14px; border-radius: 20px; box-shadow: 2px 2px 0px #121212; color: #121212;">Procreate</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedores individuales en una sola columna para los 6 proyectos -->
+    <div class="carteleria-grid-container">
+        
+        <!-- 1. coscyl -->
+        <div class="cartel-item-card">
+            <div class="cartel-thumbnail-wrapper">
+                <img src="img/coscyl.webp" alt="COSCYL">
+            </div>
+            <div class="cartel-info-row">
+                <h4>COSCYL</h4>
+                <p>Cartel desarrollado para la orquesta sinfonica del COSCYL, seleccionado el ganador para su uso. </p>
+            </div>
+        </div>
+
+        <!-- 2. cata -->
+        <div class="cartel-item-card">
+            <div class="cartel-thumbnail-wrapper">
+                <img src="img/cata.webp" alt="Cata">
+            </div>
+            <div class="cartel-info-row">
+                <h4>Cata</h4>
+                <p>Cartel promocional y gráfico.</p>
+            </div>
+        </div>
+
+        <!-- 3. modulos -->
+        <div class="cartel-item-card">
+            <div class="cartel-thumbnail-wrapper">
+                <img src="img/modulos.webp" alt="Módulos">
+            </div>
+            <div class="cartel-info-row">
+                <h4>Módulos</h4>
+                <p>Composición modular y reticular.</p>
+            </div>
+        </div>
+
+        <!-- 4. weareconected -->
+        <div class="cartel-item-card">
+            <div class="cartel-thumbnail-wrapper">
+                <img src="img/weareconected.webp" alt="We Are Connected">
+            </div>
+            <div class="cartel-info-row">
+                <h4>We Are Connected</h4>
+                <p>Ilustración modular.</p>
+            </div>
+        </div>
+
+        <!-- 5. catalogo -->
+        <div class="cartel-item-card">
+            <div class="cartel-thumbnail-wrapper">
+                <img src="img/catalogo.webp" alt="Catálogo">
+            </div>
+            <div class="cartel-info-row">
+                <h4>Catálogo</h4>
+                <p>Diseño editorial y expositivo, desarrollado en base a una propuesta de rebranding sobre la identidad visual de Ávila.</p>
+            </div>
+        </div>
+
+        <!-- 6. bauhaus -->
+        <div class="cartel-item-card">
+            <div class="cartel-thumbnail-wrapper">
+                <img src="img/bauhaus.webp" alt="Bauhaus">
+            </div>
+            <div class="cartel-info-row">
+                <h4>Bauhaus</h4>
+                <p>Infografía sobre la Bauhaus.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
