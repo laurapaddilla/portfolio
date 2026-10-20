@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laura Padilla | Frontend Developer & Graphic Designer</title>
+    <meta name="description" content="Portfolio de Laura Padilla, Frontend Developer y diseñadora gráfica y UI/UX en Salamanca. Webs, identidad visual, cartelería y packaging.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://portfolio-laura-padilla.vercel.app/">
+    <link rel="canonical" href="https://portfolio-laura-padilla.vercel.app/">
+    <meta property="og:image" content="https://portfolio-laura-padilla.vercel.app/img/og-laura.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="Laura Padilla | Frontend Developer & Graphic Designer">
+    <meta property="og:description" content="Portfolio de Laura Padilla, Frontend Developer y diseñadora gráfica y UI/UX en Salamanca. Webs, identidad visual, cartelería y packaging.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' fill='%23FF2A85'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -31,30 +42,37 @@
                 box-sizing: border-box !important;
             }
 
-            /* 2. Menú superior blindado para móvil: centrado, sin salirse y con aire uniforme */
+            /* 2. Menú superior fijo para móvil: centrado, sin salirse y con aire uniforme */
+            html {
+                scroll-padding-top: 5rem;
+            }
             .header-navbar {
-                position: relative !important;
+                position: fixed !important;
+                top: 0.75rem !important;
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%) !important;
                 display: flex !important;
                 justify-content: space-between !important;
                 align-items: center !important;
                 width: calc(100% - 2.5rem) !important;
                 max-width: 100% !important;
-                margin: 1rem auto 1.5rem auto !important;
+                margin: 0 !important;
                 padding: 0.6rem 1rem !important;
                 box-sizing: border-box !important;
-                left: auto !important;
-                right: auto !important;
-                transform: none !important;
             }
             .nav-logo {
                 font-size: 0.95rem !important;
                 letter-spacing: -0.5px !important;
             }
             .nav-links {
-                gap: 0.5rem !important;
+                gap: 0.75rem !important;
                 font-size: 0.75rem !important;
                 padding-left: 0 !important;
                 margin: 0 !important;
+            }
+            .nav-links a {
+                font-size: 0.75rem !important;
             }
             .btn-connect {
                 font-size: 0.75rem !important;
@@ -63,7 +81,7 @@
 
             /* 3. Espaciado vertical equilibrado entre secciones */
             .hero-section {
-                padding-top: 0.5rem !important;
+                padding-top: 6rem !important;
                 padding-bottom: 1.5rem !important;
             }
             .projects-grid-section, 
@@ -92,8 +110,8 @@
             }
 
             /* 6. Tamaños de títulos proporcionados */
-            .hero-section h2, 
-            .hero-info-block h2 {
+            .hero-section h1, 
+            .hero-info-block h1 {
                 font-size: 2rem !important;
                 line-height: 1.15 !important;
             }
@@ -159,6 +177,18 @@
                 font-weight: 600;
             }
         }
+
+        /* --- MÓVILES ESTRECHOS: el menú no cabe en una fila --- */
+        @media (max-width: 480px) {
+            /* Los enlaces siguen disponibles en el footer */
+            .nav-links {
+                display: none !important;
+            }
+            .footer-contact-details .email-link {
+                word-break: normal !important;
+                overflow-wrap: anywhere !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -189,7 +219,7 @@
         </div>
         <div style="display: flex; gap: 8px;">
             <a href="mailto:padillanavazolaura@gmail.com" class="msg-icon-circle-btn" title="Enviar Email">✉</a>
-            <a href="/CV Laura Padilla Navazo 2026.pdf" class="download-icon-circle-btn" title="Ver o descargar CV" target="_blank" rel="noopener noreferrer">↓</a>
+            <a href="CV-Laura-Padilla-Navazo-2026.pdf" class="download-icon-circle-btn" title="Ver o descargar CV" target="_blank" rel="noopener noreferrer">↓</a>
         </div>
     </div>
 
@@ -201,8 +231,8 @@
                     <span class="status-dot"></span>
                     <span>Disponible presencial en Salamanca, Remoto o Freelance</span>
                 </div>
-                <h2>Hi ✦ I'm Laura.<br><span>Frontend Developer</span> & <em>Graphic / UI/UX Designer</em>.</h2>
-                <p class="hero-sub-msg">Bienvenido a mi pequeño rincón de internet.</p>
+                <h1>Hi ✦ I'm Laura.<br><span>Frontend Developer</span> & <em>Graphic / UI/UX Designer</em>.</h1>
+                <p class="hero-sub-msg">Te doy la bienvenida a mi pequeño rincón de internet.</p>
                 <p class="hero-body-text">Especializada en la creación integral de proyectos: desde el concepto visual y el diseño UI/UX hasta el código final. Buscando impulsar ideas de forma remota para empresas y clientes de todo el mundo.</p>
             </div>
         </section>
@@ -212,13 +242,13 @@
                 <span>✦ FRONTEND & BRANDING </span>
                 <span>✦ ADOBE SUITE </span>
                 <span>✦ DE LA IDEA AL NAVEGADOR </span>
-                <span>✦ CROCHET & VECTOR LOVER </span>
+                <span>✦ MARKETING & CAMPAÑAS </span>
                 <span>✦ INTERFACES INTUITIVAS </span>
                 <span>✦ WEBS A MEDIDA </span>
                 <span>✦ FRONTEND & BRANDING </span>
                 <span>✦ ADOBE SUITE </span>
                 <span>✦ DE LA IDEA AL NAVEGADOR </span>
-                <span>✦ CROCHET & VECTOR LOVER </span>
+                <span>✦ MARKETING & CAMPAÑAS </span>
                 <span>✦ INTERFACES INTUITIVAS </span>
                 <span>✦ WEBS A MEDIDA </span>
             </div>
@@ -309,9 +339,8 @@
                 </div>
 
                 <div class="about-right-narrative-block">
-                    <p>Creo firmemente que el buen diseño nace de <strong>saber escuchar</strong>. Entiendo el vector, entiendo el píxel y entiendo el código que los hace posibles en el navegador.</p>
-                    <p>Me obsesionan los pequeños detalles: el espaciado exacto, el comportamiento de un botón bajo presión o la armonía tipográfica. No imagino diseños que no se puedan programar de forma limpia, ni pico código sin cuidar el arte final del proyecto.</p>
-                    <p>Cuando no estoy frente a la pantalla depurando estilos o líneas de código, me encontrarás tejiendo crochet o diseñando identidades corporativas. Considero que la paciencia milimétrica que requiere un patrón manual es la misma disciplina que aplico para actuar frente a mis soluciones de desarrollo frontend.</p>
+                    <p>Empecé dibujando y acabé programando, y por el camino descubrí que no quería elegir. Me gusta <strong>entender el proyecto entero</strong>: por qué existe, a quién habla y cómo se va a ver y comportar en la pantalla de quien lo use.</p>
+                    <p>Soy bastante multitarea. He trabajado en identidad visual, packaging, cartelería, diseño editorial e interfaces, y también en marketing y en campañas. Esto me permite <strong>ver cada pieza dentro del conjunto</strong>: que la marca, la web y la campaña cuenten la misma historia y no parezcan hechas por tres personas distintas.</p>
                 </div>
 
             </div>
@@ -348,7 +377,7 @@
                         <p style="font-family: var(--font-mono); font-size: 0.85rem; color: #444; margin-bottom: 0.5rem;">Menú</p>
                         <a href="#work">Proyectos</a>
                         <a href="#about">Sobre mí</a>
-                        <a href="/CV Laura Padilla Navazo 2026.pdf" target="_blank" rel="noopener noreferrer">Descargar resumen(CV) </a>
+                        <a href="CV-Laura-Padilla-Navazo-2026.pdf" target="_blank" rel="noopener noreferrer">Descargar CV</a>
                     </div>
                 </div>
             </div>

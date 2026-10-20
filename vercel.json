@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/CV Laura Padilla Navazo 2026.pdf", "destination": "/CV-Laura-Padilla-Navazo-2026.pdf", "permanent": true },
+    { "source": "/CV%20Laura%20Padilla%20Navazo%202026.pdf", "destination": "/CV-Laura-Padilla-Navazo-2026.pdf", "permanent": true }
+  ]
+}

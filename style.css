@@ -108,9 +108,9 @@ html, body, a, button, .icon-box-item, .symmetric-project-card {
 
 @keyframes pulse { 0% { transform: scale(0.9); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.5; } 100% { transform: scale(0.9); opacity: 1; } }
 
-.hero-info-block h2 { font-family: var(--font-title); font-size: 5.5rem; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 2rem; }
-.hero-info-block h2 span { color: var(--accent-color); }
-.hero-info-block h2 em { font-style: normal; color: var(--secondary-color); }
+.hero-info-block h1 { font-family: var(--font-title); font-size: 5.5rem; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 2rem; }
+.hero-info-block h1 span { color: var(--accent-color); }
+.hero-info-block h1 em { font-style: normal; color: var(--secondary-color); }
 
 .hero-sub-msg { font-family: var(--font-mono); font-size: 1.1rem; color: var(--text-color); font-weight: 600; margin-bottom: 1rem; text-transform: lowercase; }
 .hero-body-text { font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; max-width: 85%; }
@@ -283,8 +283,9 @@ html, body, a, button, .icon-box-item, .symmetric-project-card {
     top: 0; 
     left: 0; 
     width: 100vw; 
-    height: 100vh; 
-    background-color: rgba(18, 18, 18, 0.4); 
+    height: 100vh;
+    height: 100dvh;
+    background-color: rgba(18, 18, 18, 0.4);
     backdrop-filter: blur(4px); 
     z-index: 6000; 
     display: flex; 
@@ -363,15 +364,108 @@ html, body, a, button, .icon-box-item, .symmetric-project-card {
     color: white;
 }
 
+/* ==========================================================================
+   --- RESPONSIVE ---
+   ========================================================================== */
+
+/* Dispositivos táctiles: sin cursor personalizado, cursor nativo */
+@media (hover: none), (pointer: coarse) {
+    .custom-cursor { display: none; }
+    html, body, a, button, .icon-box-item, .symmetric-project-card { cursor: auto !important; }
+    a, button, .symmetric-project-card { cursor: pointer !important; }
+}
+
+/* Tablet horizontal / portátiles pequeños */
+@media (max-width: 1100px) {
+    .hero-info-block h1 { font-size: 4.4rem; }
+    .blackout-inner-content h2 { font-size: 4.4rem; }
+    .about-section-layout h2 { font-size: 3.2rem; }
+    .about-split-columns { gap: 3rem; }
+    .stack-section-layout { padding: 3.5rem; gap: 3rem; }
+    .stack-title-side h3 { font-size: 2.6rem; }
+    .project-thumbnail-wrapper { height: 300px; }
+}
+
 @media (max-width: 900px) {
-    .header-navbar { width: 92%; gap: 1rem; padding: 8px 12px 8px 18px; }
+    .header-navbar { width: 92%; gap: 1rem; padding: 8px 12px 8px 18px; justify-content: space-between; }
     .hero-section { padding-top: 9rem; }
-    .hero-info-block h2 { font-size: 3.5rem; }
+    .hero-info-block h1 { font-size: 3.5rem; }
     .hero-body-text { max-width: 100%; }
     .clean-projects-columns-container { grid-template-columns: 1fr; }
-    .stack-section-layout { flex-direction: column; padding: 2rem; }
+    .project-thumbnail-wrapper { height: 340px; }
+    .grid-main-headline { font-size: 2.8rem; margin-bottom: 2.5rem; }
+    .projects-grid-section, .about-section-layout { padding: 5rem 0; }
+    .about-section-layout h2 { font-size: 2.6rem; max-width: 100%; margin-bottom: 2.5rem; }
+    .stack-section-layout { flex-direction: column; padding: 2rem; gap: 2rem; }
+    .stack-title-side h3 { font-size: 2.2rem; }
     .about-split-columns { flex-direction: column; gap: 3rem; }
-    .blackout-inner-content h2 { font-size: 3.5rem; }
+    .about-left-identity-card { width: 100%; }
+    .profile-portrait-frame { height: 460px; }
+    .blackout-footer-block { padding: 5rem 0 8rem 0; }
+    .blackout-inner-content h2 { font-size: 3.5rem; margin-bottom: 3rem; }
     .footer-columns-links-row { flex-direction: column; gap: 2rem; }
-    .project-modal-window { top: 16px; left: 16px; right: 16px; bottom: 16px; }
+
+    /* Modal de proyectos: ID para ganar a los estilos inyectados por cada ficha */
+    #project-modal .project-modal-window {
+        top: 12px !important; left: 12px !important; right: 12px !important; bottom: 12px !important;
+        width: auto !important; max-width: none !important; margin: 0 !important;
+        box-shadow: 6px 6px 0px #121212;
+    }
+    #project-modal .modal-scroll-content { padding: 5rem 1.5rem 3rem 1.5rem !important; }
+    #project-modal .project-case-container { width: 100% !important; margin: 0 auto !important; }
+    #project-modal .bento-card-text h3 { font-size: 2.8rem !important; }
+    #project-modal .video-thumbnail-box { height: 300px !important; }
+}
+
+@media (max-width: 600px) {
+    .hero-sub-msg { font-size: 0.95rem; }
+    .hero-body-text { font-size: 1.02rem; }
+    .marquee-separator-line { padding: 0.8rem 0; }
+    .marquee-track-flow span { font-size: 0.75rem; padding: 0 1.4rem; }
+
+    .project-thumbnail-wrapper { height: 230px; border-radius: 24px; margin-bottom: 1.1rem; }
+    .project-meta-row { flex-wrap: wrap; gap: 0.25rem 1rem; }
+    .project-name-title { font-size: 1.35rem; }
+    .project-brief-line { font-size: 0.95rem; }
+
+    .profile-portrait-frame { height: 360px; border-radius: 24px; box-shadow: 4px 4px 0px var(--text-color); }
+    .exp-row-item { flex-wrap: wrap; gap: 0.2rem 1rem; font-size: 0.9rem; }
+    .about-right-narrative-block { gap: 1.25rem; }
+    .about-right-narrative-block p { font-size: 1.05rem; }
+
+    .stack-section-layout { padding: 1.5rem; border-radius: 24px; box-shadow: 4px 4px 0px var(--text-color); }
+    .icon-box-item { height: 52px; }
+
+    .floating-message-hub-bar { gap: 1rem; justify-content: space-between; padding: 6px 8px 6px 16px; }
+    .msg-bar-text { font-size: 0.75rem; }
+    .msg-bar-subtext { font-size: 0.68rem; }
+
+    .blackout-footer-block { padding: 4rem 0 7.5rem 0; }
+    .blackout-inner-content { padding: 0 1.25rem; }
+    .blackout-inner-content h2 { font-size: 2.5rem; line-height: 1; margin-bottom: 2.5rem; }
+    .footer-columns-links-row { padding-top: 2rem; }
+
+    /* Modal y fichas de proyecto */
+    #project-modal .project-modal-window {
+        top: 8px !important; left: 8px !important; right: 8px !important; bottom: 8px !important;
+        border-width: 2px; border-radius: 18px; box-shadow: 4px 4px 0px #121212;
+    }
+    #project-modal .modal-scroll-content { padding: 4.5rem 0.9rem 2rem 0.9rem !important; }
+    #project-modal .project-case-container { gap: 1.25rem !important; }
+    #project-modal .bento-card-text { padding: 1.5rem 1.25rem !important; border-radius: 18px !important; }
+    #project-modal .bento-card-text h3 { font-size: clamp(1.8rem, 9vw, 2.4rem) !important; overflow-wrap: anywhere; }
+    #project-modal .bento-card-text a { font-size: 0.95rem !important; }
+    #project-modal .long-scroll-container,
+    #project-modal .cartel-item-card,
+    #project-modal .video-interactive-card { border-radius: 18px !important; box-shadow: 4px 4px 0px #121212 !important; }
+    #project-modal .cartel-info-row { padding: 1.1rem; }
+    #project-modal .video-thumbnail-box { height: 220px !important; }
+    #project-modal .play-video-btn { padding: 10px 18px !important; font-size: 0.8rem !important; }
+    #project-modal .video-caption { padding: 1rem !important; }
+    .modal-close-btn { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 1.5rem; line-height: 35px; }
+
+    /* Lightbox de vídeo */
+    #videoLightbox { padding: 0.75rem; }
+    #videoLightbox .video-lightbox-content { width: 100%; padding: 0; border-radius: 16px; box-shadow: 4px 4px 0px var(--accent-color); }
+    #videoLightbox .close-lightbox-btn { top: 8px; right: 8px; width: 34px; height: 34px; font-size: 1rem; }
 }
